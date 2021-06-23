@@ -58,6 +58,24 @@ class TestLoginUser:
             f"Trying to sign up without login and with password '{password}' successful, but should not be. " \
             f"Expected status 400 but got {status}. Json response is: {json}"
 
+    def test_that_user_cant_sign_into_your_account_with_swapping_login_password(self):
+        base = CrudUser()
+        username = str(time.time())
+        password = str(time.time() + (60 * 60))
+        response = base.send_registration_request(username, password, password)
+        status = response.status_code
+        json = response.json()
+        assert status == 201, \
+            f"Creating user with login '{username}' expected status is equal 201, but got {status}. " \
+            f"Json response is: {json}"
+
+        response = base.user_sign_in(password, username)
+        status = response.status_code
+        json = response.json()
+        assert status == 404, \
+            f"Trying to sign up with swapping login '{password}' password '{username}' successful, but should not be." \
+            f"Expected status 404 but got {status}. Json response is: {json}"
+
     def test_that_user_cant_sign_into_your_account_after_change_password(self):
         base = CrudUser()
         username = str(time.time())
