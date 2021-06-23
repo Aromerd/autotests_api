@@ -8,7 +8,7 @@ git clone https://github.com/Aromerd/api_autotests
 
 - #### Install missing packages:
 ~~~ 
-pip install -r requirements.txt
+pip install -r requirements
 ~~~
 - #### Start with command:
 ~~~ 
