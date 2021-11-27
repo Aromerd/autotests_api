@@ -3,7 +3,7 @@
 ## Local deployment:
 - #### Clone repository: 
 ~~~ 
-git clone https://github.com/Aromerd/api_autotests
+git clone https://github.com/Aromerd/autotests_api.git
 ~~~
 
 - #### Install missing packages:
